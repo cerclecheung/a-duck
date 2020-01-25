@@ -28,11 +28,36 @@ class Platform extends React.Component {
         emissive="#005DED"
         emissive-intensity="0.1"
       >
-        <Entity id="tree-containter" position="0 0.5 -1.5" rotation="-90 0 0">
+        <Entity id="duck-containter" position="0 0.5 -1.5" rotation="-90 0 0">
+          <Entity
+            id="duck-left"
+            gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+            scale="0.2 0.2 0.2"
+            rotation="0 -90 0"
+            shadow
+            position="-0.4 0.4 0"
+          ></Entity>
+          <Entity
+            id="duck-center"
+            gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+            scale="0.2 0.2 0.2"
+            rotation="0 -90 0"
+            shadow
+            position="0 0.4 0"
+          ></Entity>
+          <Entity
+            id="duck-right"
+            gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+            scale="0.2 0.2 0.2"
+            rotation="0 -90 0"
+            shadow
+            position="0.4 0.4 0"
+          ></Entity>
           <Entity id="player" player>
             <Entity
-              primitive="a-sphere"
-              radius="0.05"
+              gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+              scale="0.1 0.1 0.1"
+              rotation="0 90 0"
               animation__position={{
                 loop: "true",
                 dir: "alternate",
@@ -44,10 +69,10 @@ class Platform extends React.Component {
               animation__radius={{
                 loop: "true",
                 dir: "alternate",
-                property: "radius",
-                dur: "1500",
-                from: "0.05",
-                to: "0.055"
+                property: "scale",
+                dur: "1000",
+                from: "0.1 0.1 0.1",
+                to: "0.11 0.11 0.11"
               }}
             >
               <Entity
