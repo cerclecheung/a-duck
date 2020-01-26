@@ -29,7 +29,7 @@ class Platform extends React.Component {
         emissive="#005DED"
         emissive-intensity="0.1"
       >
-        <Entity id="duck-containter" position="0 0.5 -1.5" rotation="-90 0 0">
+        <Entity id="duck-container" position="0 0.5 -1.5" rotation="-90 0 0">
           <Ducks />
           <Entity id="player" player>
             <Entity

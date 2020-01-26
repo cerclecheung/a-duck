@@ -21,7 +21,7 @@ class Ducks extends React.Component {
             from: "-0.4 0.4 -7",
             to: "-0.4 0.4 1.5"
           }}
-        ></Entity>
+        />
         <Entity
           id="duck-center"
           gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
@@ -36,7 +36,7 @@ class Ducks extends React.Component {
             to: "0 0.4 1.5",
             easing: "easeInQuad"
           }}
-        ></Entity>
+        />
         <Entity
           id="duck-right"
           gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
@@ -50,7 +50,7 @@ class Ducks extends React.Component {
             from: "0.4 0.4 -7",
             to: "0.4 0.4 1.5"
           }}
-        ></Entity>
+        />
       </Entity>
     );
   }
