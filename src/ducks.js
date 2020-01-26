@@ -3,14 +3,18 @@ import "aframe-animation-component";
 import "aframe-particle-system-component";
 import React from "react";
 import { Entity } from "aframe-react";
+import { addObsctacleTo } from "./motion";
 
 class Ducks extends React.Component {
+  componentDidMount() {}
   render() {
     return (
-      <Entity>
+      <Entity id="real-container">
         <Entity
+          primitive="a-sphere"
+          radius="0.5"
           id="duck-left"
-          gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+          // gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
           scale="0.2 0.2 0.2"
           rotation="0 -90 0"
           shadow
@@ -24,7 +28,9 @@ class Ducks extends React.Component {
         ></Entity>
         <Entity
           id="duck-center"
-          gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+          primitive="a-sphere"
+          radius="0.5"
+          // gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
           scale="0.2 0.2 0.2"
           rotation="0 -90 0"
           shadow
@@ -39,7 +45,9 @@ class Ducks extends React.Component {
         ></Entity>
         <Entity
           id="duck-right"
-          gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
+          primitive="a-sphere"
+          radius="0.5"
+          // gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
           scale="0.2 0.2 0.2"
           rotation="0 -90 0"
           shadow
