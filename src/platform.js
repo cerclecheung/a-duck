@@ -4,6 +4,7 @@ import "aframe-particle-system-component";
 import "babel-polyfill";
 import React from "react";
 import { Entity } from "aframe-react";
+import Ducks from "./ducks";
 
 class Platform extends React.Component {
   constructor(props) {
@@ -29,30 +30,7 @@ class Platform extends React.Component {
         emissive-intensity="0.1"
       >
         <Entity id="duck-containter" position="0 0.5 -1.5" rotation="-90 0 0">
-          <Entity
-            id="duck-left"
-            gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
-            scale="0.2 0.2 0.2"
-            rotation="0 -90 0"
-            shadow
-            position="-0.4 0.4 0"
-          ></Entity>
-          <Entity
-            id="duck-center"
-            gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
-            scale="0.2 0.2 0.2"
-            rotation="0 -90 0"
-            shadow
-            position="0 0.4 0"
-          ></Entity>
-          <Entity
-            id="duck-right"
-            gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
-            scale="0.2 0.2 0.2"
-            rotation="0 -90 0"
-            shadow
-            position="0.4 0.4 0"
-          ></Entity>
+          <Ducks />
           <Entity id="player" player>
             <Entity
               gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"

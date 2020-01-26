@@ -8,7 +8,6 @@ import ReactDOM from "react-dom";
 import Ocean from "./ocean";
 import Platform from "./platform";
 import Avocado from "./avocado";
-import Duck from "./duck";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +33,6 @@ class App extends React.Component {
           intensity="0.8"
           color="#B4c5ec;"
         />
-        <Duck id="duck1" position="0 -0.5 0" />
         <Ocean />
         <Avocado />
         <Platform />
@@ -50,7 +48,6 @@ class App extends React.Component {
             property: "scale",
             startEvents: "fusing",
             easing: "easeInQuad",
-            // fill: "backwards",
             from: "1 1 1",
             to: "0.2 0.2 0.2",
             dur: "250"

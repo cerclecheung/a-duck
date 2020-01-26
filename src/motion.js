@@ -28,5 +28,26 @@ const setupControls = () => {
     }
   });
 };
+//obstacles
+let obstacleLeft;
+let obstacleCenter;
+let obstacleRight;
+
+const setupObstacles = () => {
+  obstacleLeft = document.getElementById("duck-left");
+  obstacleRight = document.getElementById("duck-right");
+  obstacleCenter = document.getElementById("duck-center");
+
+  removeObstacle(obstacleLeft);
+  removeObstacle(obstacleCenter);
+  removeObstacle(obstacleRight);
+};
+const removeObstacle = obj => {
+  obj.parentNode.removeChild(obj);
+};
 
 setupControls();
+
+window.onload = function() {
+  setupObstacles();
+};
