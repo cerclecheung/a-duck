@@ -31,7 +31,12 @@ class Player extends React.Component {
 
   render() {
     return (
-      <Entity id="player" player position={this.state.position}>
+      <Entity
+        id="player"
+        ref={this.props.playerRef}
+        player
+        position={this.state.position}
+      >
         <Entity
           gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
           scale="0.1 0.1 0.1"

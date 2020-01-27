@@ -11,7 +11,7 @@ class Platform extends React.Component {
   constructor(props) {
     super(props);
     this.state = { playerPosition: {} };
-    this.getPlayerPosition = this.getPlayerPosition.bind(this);
+    this.playerRef = React.createRef();
   }
   getPlayerPosition(playerPosition) {
     this.setState({ playerPosition });
@@ -35,8 +35,11 @@ class Platform extends React.Component {
         emissive-intensity="0.1"
       >
         <Entity id="duck-containter" position="0 0.5 -1.5" rotation="-90 0 0">
-          <Ducks />
-          <Player getPlayerPosition={this.getPlayerPosition} />
+          <Ducks player={this.playerRef} />
+          <Player
+            playerRef={this.playerRef}
+            getPlayerPosition={this.getPlayerPosition}
+          />
         </Entity>
       </Entity>
     );

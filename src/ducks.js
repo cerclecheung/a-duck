@@ -25,17 +25,41 @@ class Ducks extends React.Component {
         duckNum++;
         this.setState({
           ...this.state,
-          ducks: [...this.state.ducks, { ...duck, id: duckNum }]
+          ducks: [...this.state.ducks, { ...duck, id: `duck-${duckNum}` }]
         });
       }, duck.time);
     });
     const AFRAME = window.AFRAME;
 
+    const removeDuck = id => {
+      console.log(`Rmving diuck at ID ${id}`);
+      this.setState({
+        ...this.state,
+        ducks: this.state.ducks.filter(duck => duck.id !== id)
+      });
+      // this.setState(prevState => {
+      //   prevState.ducks = prevState.ducks.filter(duck => duck.id !== id);
+      //   return prevState;
+      // });
+    };
+
+    const checkCollide = duckPo => {
+      console.log(
+        "player position",
+        this.props.player.current.props.position.x === duckPo.x
+      );
+    };
+
     AFRAME.registerComponent("duck-obstacle", {
       tick: function(time, timeDelta) {
         var position = this.el.object3D.position;
         var id = this.el.id;
-        console.log("position", position, id);
+        // console.log(position, id);
+
+        if (position.z == 1.5) {
+          removeDuck(id);
+        }
+        checkCollide(position);
       }
     });
   }
@@ -50,7 +74,7 @@ class Ducks extends React.Component {
             <Entity
               duck-obstacle
               key={index}
-              id={`duck-${duck.id}`}
+              id={duck.id}
               gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
               scale="0.2 0.2 0.2"
               rotation="0 -90 0"
