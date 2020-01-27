@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 import Ocean from "./ocean";
 import Platform from "./platform";
 import Avocado from "./avocado";
-import { setupObstacles, setupControls, addObstacleTo } from "./motion";
+// import { setupObstacles, setupControls, addObstacleTo } from "./motion";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = { color: "red" };
   }
   componentDidMount() {
-    setupObstacles();
+    // setupObstacles();
   }
 
   render() {

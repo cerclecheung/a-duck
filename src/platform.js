@@ -10,7 +10,11 @@ import Player from "./player";
 class Platform extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { playerPosition: {} };
+    this.getPlayerPosition = this.getPlayerPosition.bind(this);
+  }
+  getPlayerPosition(playerPosition) {
+    this.setState({ playerPosition });
   }
   render() {
     return (
@@ -32,7 +36,7 @@ class Platform extends React.Component {
       >
         <Entity id="duck-containter" position="0 0.5 -1.5" rotation="-90 0 0">
           <Ducks />
-          <Player />
+          <Player getPlayerPosition={this.getPlayerPosition} />
         </Entity>
       </Entity>
     );

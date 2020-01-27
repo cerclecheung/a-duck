@@ -5,8 +5,8 @@ import React from "react";
 import { Entity } from "aframe-react";
 
 class Player extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       position: { x: 0, y: 0, z: 0 }
     };
@@ -16,13 +16,14 @@ class Player extends React.Component {
     const AFRAME = window.AFRAME;
     const movePlayerTo = position => {
       this.setState({ position });
+      // this.props.getPlayerPosition(position);
     };
     AFRAME.registerComponent("lane-controls", {
       tick: function(time, timeDelta) {
         var rotation = this.el.object3D.rotation;
 
-        if (rotation.y > 0.1) movePlayerTo({ x: -0.5, y: 0, z: 0 });
-        else if (rotation.y < -0.1) movePlayerTo({ x: 0.5, y: 0, z: 0 });
+        if (rotation.y > 0.1) movePlayerTo({ x: -0.4, y: 0, z: 0 });
+        else if (rotation.y < -0.1) movePlayerTo({ x: 0.4, y: 0, z: 0 });
         else movePlayerTo({ x: 0, y: 0, z: 0 });
       }
     });
