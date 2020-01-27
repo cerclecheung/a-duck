@@ -15,9 +15,9 @@ class Ducks extends React.Component {
 
   componentDidMount() {
     const ducksWithTime = [
-      { time: 0, position: { x: -0.4, y: 0.4, z: 0 } },
-      { time: 1000, position: { x: 0, y: 0.4, z: 0 } },
-      { time: 2000, position: { x: 0.4, y: 0.4, z: 0 } }
+      { time: 0, position: { x: -0.4, y: 0.4, z: -7 } },
+      { time: 1000, position: { x: 0, y: 0.4, z: -7 } },
+      { time: 2000, position: { x: 0.4, y: 0.4, z: -7 } }
     ];
     let duckNum = 0;
     ducksWithTime.forEach(duck => {
@@ -31,22 +31,40 @@ class Ducks extends React.Component {
     });
     const AFRAME = window.AFRAME;
 
-    const removeDuck = id => {
-      console.log(`Rmving diuck at ID ${id}`);
-      this.setState({
-        ...this.state,
-        ducks: this.state.ducks.filter(duck => duck.id !== id)
-      });
+    const updateDuck = (id, z) => {
+      console.log(`Updating duck at ID ${id}`);
       // this.setState(prevState => {
-      //   prevState.ducks = prevState.ducks.filter(duck => duck.id !== id);
+      //   prevState.ducks = prevState.ducks.map(duck => {
+      //     console.log(duck.id, id, duck.id === id);
+      //     if (duck.id === id) {
+      //       duck.position.z = z;
+      //       console.log(z, duck);
+      //     }
+      //     return duck;
+      //   });
+      //   console.log("in the updateDuck, prevState", prevState);
       //   return prevState;
       // });
+      this.setState({});
+    };
+
+    const removeDuck = id => {
+      console.log(`Rmving diuck at ID ${id}`);
+      this.setState(prevState => {
+        prevState.ducks = prevState.ducks.filter(duck => duck.id !== id);
+        console.log("prevState", prevState);
+        return prevState;
+      });
     };
 
     const checkCollide = duckPo => {
+      const playerPo = this.props.player.current.props.position;
+      console.log(playerPo, duckPo);
       console.log(
-        "player position",
-        this.props.player.current.props.position.x === duckPo.x
+        "player position check",
+        playerPo.x === Number(duckPo.x) &&
+          playerPo.z - 0.1 < Number(duckPo.z) &&
+          Number(duckPo.z) < playerPo.z + 0.1
       );
     };
 
@@ -54,9 +72,10 @@ class Ducks extends React.Component {
       tick: function(time, timeDelta) {
         var position = this.el.object3D.position;
         var id = this.el.id;
-        // console.log(position, id);
+        updateDuck(id, Number(position.z));
 
         if (position.z == 1.5) {
+          console.log(`${id}'s z index is 1.5`);
           removeDuck(id);
         }
         checkCollide(position);
@@ -65,7 +84,7 @@ class Ducks extends React.Component {
   }
 
   render() {
-    console.log("a group of ducks ", this.state);
+    console.log("rendering a group of ducks ", this.state);
 
     return (
       <Entity id="real-container">
@@ -83,10 +102,9 @@ class Ducks extends React.Component {
               animation={{
                 property: "position",
                 dur: "6000",
-                from: `${duck.position.x} ${duck.position.y} ${duck.position.z -
-                  7}`,
+                from: `${duck.position.x} ${duck.position.y} ${duck.position.z}`,
                 to: `${duck.position.x} ${duck.position.y} ${duck.position.z +
-                  1.5}`
+                  8.5}`
               }}
             ></Entity>
           ))

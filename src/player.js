@@ -16,7 +16,6 @@ class Player extends React.Component {
     const AFRAME = window.AFRAME;
     const movePlayerTo = position => {
       this.setState({ position });
-      // this.props.getPlayerPosition(position);
     };
     AFRAME.registerComponent("lane-controls", {
       tick: function(time, timeDelta) {
