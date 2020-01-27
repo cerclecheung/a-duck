@@ -5,9 +5,9 @@ import "aframe-particle-system-component";
 import { Entity, Scene } from "aframe-react";
 import React from "react";
 import ReactDOM from "react-dom";
-import Ocean from "./ocean";
+import Ground from "./ground";
 import Platform from "./platform";
-import Avocado from "./avocado";
+import Avocado from "./avocado/avocado";
 // import { setupObstacles, setupControls, addObstacleTo } from "./motion";
 
 class App extends React.Component {
@@ -21,7 +21,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Scene>
+      <Scene fog="type: linear; color: #a3d0ed; near:5; far:20">
         <Entity primitive="a-sky" color="#a3d0ed" />
         <Entity
           primitive="a-light"
@@ -37,7 +37,7 @@ class App extends React.Component {
           intensity="0.8"
           color="#B4c5ec;"
         />
-        <Ocean />
+        <Ground />
         <Avocado />
         <Platform />
 

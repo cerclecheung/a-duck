@@ -1,10 +1,9 @@
 import "aframe";
 import "aframe-animation-component";
-import "aframe-particle-system-component";
 import React from "react";
 import { Entity } from "aframe-react";
 
-class Ocean extends React.Component {
+class Ground extends React.Component {
   render() {
     return (
       <Entity
@@ -18,4 +17,4 @@ class Ocean extends React.Component {
     );
   }
 }
-export default Ocean;
+export default Ground;

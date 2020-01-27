@@ -3,7 +3,7 @@ import "aframe-animation-component";
 import "aframe-particle-system-component";
 import React from "react";
 import { Entity } from "aframe-react";
-import { addObstacleTo } from "./motion";
+import ducksWithTime from "./initialDuckArray";
 
 class Ducks extends React.Component {
   constructor() {
@@ -16,13 +16,6 @@ class Ducks extends React.Component {
 
   componentDidMount() {
     const AFRAME = window.AFRAME;
-    const ducksWithTime = [
-      { time: 0, position: { x: -0.4, y: 0.4, z: -7 } },
-      { time: 1000, position: { x: 0, y: 0.4, z: -7 } },
-      { time: 2000, position: { x: 0.4, y: 0.4, z: -7 } },
-      { time: 3000, position: { x: -0.4, y: 0.4, z: -7 } },
-      { time: 4000, position: { x: 0, y: 0.4, z: -7 } }
-    ];
     let duckNum = 0;
     ducksWithTime.forEach(duck => {
       setTimeout(() => {
@@ -82,6 +75,8 @@ class Ducks extends React.Component {
       }
     });
   }
+
+  componentWillUpdate() {}
 
   render() {
     const ducksObject = this.state.ducks;
