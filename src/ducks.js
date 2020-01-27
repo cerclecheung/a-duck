@@ -9,7 +9,7 @@ class Ducks extends React.Component {
   constructor() {
     super();
     this.state = {
-      ducks: []
+      ducks: {}
     };
   }
 
@@ -25,7 +25,7 @@ class Ducks extends React.Component {
         duckNum++;
         this.setState({
           ...this.state,
-          ducks: [...this.state.ducks, { ...duck, id: `duck-${duckNum}` }]
+          [`duck-${duckNum}`]: duck
         });
       }, duck.time);
     });
@@ -50,9 +50,10 @@ class Ducks extends React.Component {
 
     const removeDuck = id => {
       console.log(`Rmving diuck at ID ${id}`);
+
       this.setState(prevState => {
-        prevState.ducks = prevState.ducks.filter(duck => duck.id !== id);
-        console.log("prevState", prevState);
+        delete prevState.ducks[id];
+        console.log("new state", prevState);
         return prevState;
       });
     };
@@ -84,16 +85,17 @@ class Ducks extends React.Component {
   }
 
   render() {
-    console.log("rendering a group of ducks ", this.state);
+    const duckKeys = Object.keys(this.state.ducks);
+    console.log(this.state);
 
     return (
       <Entity id="real-container">
-        {this.state.ducks.length ? (
-          this.state.ducks.map((duck, index) => (
+        {duckKeys.length ? (
+          duckKeys.map((duckKey, index) => (
             <Entity
               duck-obstacle
               key={index}
-              id={duck.id}
+              id={duckKey}
               gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"
               scale="0.2 0.2 0.2"
               rotation="0 -90 0"
@@ -102,9 +104,10 @@ class Ducks extends React.Component {
               animation={{
                 property: "position",
                 dur: "6000",
-                from: `${duck.position.x} ${duck.position.y} ${duck.position.z}`,
-                to: `${duck.position.x} ${duck.position.y} ${duck.position.z +
-                  8.5}`
+                from: `${this.state[duckKey].position.x} ${this.state[duckKey].position.y} ${this.state[duckKey].position.z}`,
+                to: `${this.state[duckKey].position.x} ${
+                  this.state[duckKey].position.y
+                } ${this.state[duckKey].position.z + 8.5}`
               }}
             ></Entity>
           ))
