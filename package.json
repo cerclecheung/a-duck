@@ -1,7 +1,7 @@
 {
-  "name": "aframe-react-boilerplate",
+  "name": "aframe-aduck",
   "version": "3.0.1",
-  "description": "Boilerplate for building virtual reality experiences with A-Frame and React.",
+  "description": "duck theme rhythm game using aframe",
   "dependencies": {
     "aframe": "^0.7.1",
     "aframe-animation-component": "^3.2.5",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngokevin/aframe-react-boilerplate.git"
+    "url": "https://github.com/cerclecheung/a-duck"
   },
   "keywords": [
     "aframe",
@@ -35,7 +35,7 @@
     "aframe-react",
     "webvr"
   ],
-  "author": "Kevin Ngo <kngo@mozilla.com>",
+  "author": "CercleCheung",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ngokevin/aframe-react-boilerplate/issues"
