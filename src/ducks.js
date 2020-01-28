@@ -34,14 +34,18 @@ class Ducks extends React.Component {
 
     // const removeDuck = id => {
     //   console.log(`Rmving diuck at ID ${id}`);
-    //   this.setState(prevState => {
-    //     console.log("before state", prevState);
-    //     const ducks = prevState.ducks;
-    //     delete ducks[id];
-    //     console.log("after state", prevState);
-    //     return prevState;
-    //   });
+
+    //   delete this.state.ducks[id];
+    //   console.log("this.state", this.state);
+    //   // this.setState(prevState => {
+    //   //   console.log("before state", prevState);
+    //   //   const ducks = prevState.ducks;
+    //   //   delete ducks[id];
+    //   //   console.log("after state", prevState);
+    //   //   return prevState;
+    //   // });
     // };
+
     let lastHitDuckId = "";
     const checkCollide = (duckId, duckPo) => {
       const playerPo = this.props.player.current.props.position;
@@ -67,16 +71,15 @@ class Ducks extends React.Component {
         var id = this.el.id;
         // updateDuck(id, position);
 
-        // if (position.z == 1.5) {
-        //   console.log(`${id}'s z index is 1.5`);
-        //   // removeDuck(id);
-        // }
+        if (Number(position.z) === 1.5) {
+          console.log(`${id}'s z index is 1.5`);
+          this.el.removeAttribute("duck-obstacle");
+          // removeDuck(id);
+        }
         checkCollide(id, position);
       }
     });
   }
-
-  componentWillUpdate() {}
 
   render() {
     const ducksObject = this.state.ducks;

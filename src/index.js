@@ -13,13 +13,30 @@ import Avocado from "./avocado/avocado";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { color: "red" };
+    this.state = { isGameStart: false, isGameEnd: false };
   }
   componentDidMount() {
-    // setupObstacles();
+    const AFRAME = window.AFRAME;
+    const setStateFunc = () => {
+      console.log("did it set state");
+      this.setState(prev => {
+        prev.isGameStart = true;
+        return prev;
+      });
+    };
+    AFRAME.registerComponent("cursor-listener", {
+      init: function() {
+        console.log("did it init");
+        console.log("this.el", this.el);
+        this.el.addEventListener("click", function(evt) {
+          setStateFunc();
+        });
+      }
+    });
   }
 
   render() {
+    console.log(this.state.isGameStart);
     return (
       <Scene fog="type: linear; color: #a3d0ed; near:5; far:20">
         <Entity primitive="a-sky" color="#a3d0ed" />
@@ -38,9 +55,20 @@ class App extends React.Component {
           color="#B4c5ec;"
         />
         <Ground />
-        <Avocado />
-        <Platform />
-
+        {/* {!this.state.isGameStart ? (
+          <Entity
+            cursor-listener
+            // text={{ value: `START HERE`, align: "center", size: 1 }}
+            primitive="a-box"
+            position="0 0 0"
+            scale=".4 .4 .4"
+          />
+        ) : ( */}
+        <Entity>
+          <Avocado />
+          <Platform />
+        </Entity>
+        )}
         <Entity
           primitive="a-camera"
           player
@@ -60,11 +88,23 @@ class App extends React.Component {
           <Entity
             id="cursor-mobile"
             primitive="a-cursor"
-            cursor="fuseTimeout: 250; fuse: true"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: white; shader: flat"
-            scale="0.5 0.5 0.5"
-            raycaster="far: 50; interval: 1000; objects: .clickable"
+            cursor={{ fuseTimeout: 250, fuse: true }}
+            geometry={{
+              primitive: `ring`,
+              radiusInner: 0.02,
+              radiusOuter: 0.03
+            }}
+            material={{ color: `white`, shader: `flat` }}
+            scale="1 1 1"
+            // event-set__1={{
+            //   _event: "mouseenter",
+            //   scale: { x: 1.4, y: 1.4, z: 1.4 }
+            // }}
+            // event-set__1={{
+            //   _event: "mouseleave",
+            //   scale: { x: 1, y: 1, z: 1 }
+            // }}
+            // raycaster={{ far: 50, interval: 1000, objects: `.clickable` }}
           />
         </Entity>
       </Scene>
