@@ -1,7 +1,7 @@
 ## aframe-react-boilerplate
 A VR game built on [A-Frame](https://aframe.io) and React with [aframe-react](https://github.com/ngokevin/aframe-react).
 
-https://gph.is/g/4VVmRQe
+![Aduck Demo](https://media.giphy.com/media/Q8JJlbJ1F1vSchRKhn/giphy.gif)
 ### Installation
 
 To get started:
